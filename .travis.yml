@@ -9,9 +9,9 @@ go:
   - tip
 
 before_install:
-  - cd $GOPATH/src/github.com/fcjr/go-rpi-rgb-led-matrix/lib/rpi-rgb-led-matrix/
+  - cd $GOPATH/src/github.com/fcjr/rgbmatrix-rpi/lib/rpi-rgb-led-matrix/
   - git submodule update --init
   - make 
-  - cd $GOPATH/src/github.com/fcjr/go-rpi-rgb-led-matrix/
+  - cd $GOPATH/src/github.com/fcjr/rgbmatrix-rpi/
   - go get -t -v ./...
   - go install -v ./...

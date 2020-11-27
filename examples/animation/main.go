@@ -6,7 +6,7 @@ import (
 	"image/color"
 	"time"
 
-	rgbmatrix "github.com/fcjr/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
 	"github.com/fogleman/gg"
 )
 

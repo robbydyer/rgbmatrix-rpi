@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/disintegration/imaging"
-	rgbmatrix "github.com/fcjr/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
 )
 
 var (

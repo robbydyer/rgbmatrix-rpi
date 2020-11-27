@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	rgbmatrix "github.com/fcjr/go-rpi-rgb-led-matrix"
-	"github.com/fcjr/go-rpi-rgb-led-matrix/rpc"
+	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
+	"github.com/fcjr/rgbmatrix-rpi/rpc"
 )
 
 var (

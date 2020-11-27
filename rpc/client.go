@@ -5,7 +5,7 @@ import (
 	"image/color"
 	"net/rpc"
 
-	rgbmatrix "github.com/fcjr/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
 )
 
 func init() {

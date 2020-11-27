@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"image/color"
 
-	rgbmatrix "github.com/fcjr/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
 )
 
 var (

@@ -43,7 +43,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/fcjr/go-rpi-rgb-led-matrix/emulator"
+	"github.com/fcjr/rgbmatrix-rpi/emulator"
 )
 
 // DefaultConfig default WS281x configuration
