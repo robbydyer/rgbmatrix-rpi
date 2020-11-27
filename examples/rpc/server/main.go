@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/mcuadros/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/mcuadros/go-rpi-rgb-led-matrix"
 	"github.com/mcuadros/go-rpi-rgb-led-matrix/rpc"
 )
 
@@ -31,7 +31,7 @@ func main() {
 	config.InverseColors = *inverse_colors
 	config.DisableHardwarePulsing = *disable_hardware_pulsing
 
-	m, err := rgbmatrix.NewRGBLedMatrix(config)
+	m, err := rgbmatrix.NewRGBLedMatrix(config, &rgbmatrix.DefaultRuntimeOptions)
 	fatal(err)
 
 	rpc.Serve(m)

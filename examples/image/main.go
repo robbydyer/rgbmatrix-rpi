@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/disintegration/imaging"
-	"github.com/mcuadros/go-rpi-rgb-led-matrix"
+	rgbmatrix "github.com/mcuadros/go-rpi-rgb-led-matrix"
 )
 
 var (
@@ -39,7 +39,7 @@ func main() {
 	config.InverseColors = *inverse_colors
 	config.DisableHardwarePulsing = *disable_hardware_pulsing
 
-	m, err := rgbmatrix.NewRGBLedMatrix(config)
+	m, err := rgbmatrix.NewRGBLedMatrix(config, &rgbmatrix.DefaultRuntimeOptions)
 	fatal(err)
 
 	tk := rgbmatrix.NewToolKit(m)

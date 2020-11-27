@@ -58,6 +58,14 @@ var DefaultConfig = HardwareConfig{
 	ScanMode:          Progressive,
 }
 
+// DefaultRuntimeOptions default WS281x runtime options
+var DefaultRuntimeOptions = RuntimeOptions{
+	GPIOSlowdown:   0,
+	Daemon:         0,
+	DropPrivileges: 1,
+	DoGPIOInit:     true,
+}
+
 // HardwareConfig rgb-led-matrix configuration
 type HardwareConfig struct {
 	// Rows the number of rows supported by the display, so 32 or 16.
@@ -143,9 +151,55 @@ const (
 	Interlaced  ScanMode = 1
 )
 
+type RuntimeOptions struct {
+	// 0 = no slowdown. (Available 0...4)
+	GPIOSlowdown int
+
+	// ----------
+	// If the following options are set to disabled with -1, they are not
+	// even offered via the command line flags.
+	// ----------
+
+	// Thre are three possible values here
+	//   -1 : don't leave choise of becoming daemon to the command line parsing.
+	//        If set to -1, the --led-daemon option is not offered.
+	//    0 : do not becoma a daemon, run in forgreound (default value)
+	//    1 : become a daemon, run in background.
+	//
+	// If daemon is disabled (= -1), the user has to call
+	// RGBMatrix::StartRefresh() manually once the matrix is created, to leave
+	// the decision to become a daemon
+	// after the call (which requires that no threads have been started yet).
+	// In the other cases (off or on), the choice is already made, so the thread
+	// is conveniently already started for you.
+	// -1 disabled. 0=off, 1=on.
+	Daemon int
+
+	// Drop privileges from 'root' to 'daemon' once the hardware is initialized.
+	// This is usually a good idea unless you need to stay on elevated privs.
+	DropPrivileges int
+
+	// By default, the gpio is initialized for you, but if you run on a platform
+	// not the Raspberry Pi, this will fail. If you don't need to access GPIO
+	// e.g. you want to just create a stream output (see content-streamer.h),
+	// set this to false.
+	DoGPIOInit bool
+}
+
+func (rto *RuntimeOptions) toC() *C.struct_RGBLedRuntimeOptions {
+	o := &C.struct_RGBLedRuntimeOptions{}
+	o.gpio_slowdown = C.int(rto.GPIOSlowdown)
+	o.daemon = C.int(rto.Daemon)
+	o.drop_privileges = C.int(rto.DropPrivileges)
+	o.do_gpio_init = C.bool(rto.DoGPIOInit)
+
+	return o
+}
+
 // RGBLedMatrix matrix representation for ws281x
 type RGBLedMatrix struct {
-	Config *HardwareConfig
+	Config         *HardwareConfig
+	RuntimeOptions *RuntimeOptions
 
 	height int
 	width  int
@@ -157,7 +211,7 @@ type RGBLedMatrix struct {
 const MatrixEmulatorENV = "MATRIX_EMULATOR"
 
 // NewRGBLedMatrix returns a new matrix using the given size and config
-func NewRGBLedMatrix(config *HardwareConfig) (c Matrix, err error) {
+func NewRGBLedMatrix(config *HardwareConfig, rtOptions *RuntimeOptions) (c Matrix, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			var ok bool
@@ -173,7 +227,7 @@ func NewRGBLedMatrix(config *HardwareConfig) (c Matrix, err error) {
 	}
 
 	w, h := config.geometry()
-	m := C.led_matrix_create_from_options(config.toC(), nil, nil)
+	m := C.led_matrix_create_from_options_and_rt_options(config.toC(), rtOptions.toC())
 	b := C.led_matrix_create_offscreen_canvas(m)
 	c = &RGBLedMatrix{
 		Config: config,
