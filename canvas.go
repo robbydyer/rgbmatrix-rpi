@@ -74,4 +74,5 @@ type Matrix interface {
 	Apply([]color.Color) error
 	Render() error
 	Close() error
+	SetBrightness(brightness int)
 }
