@@ -202,3 +202,5 @@ func (e *Emulator) Set(position int, c color.Color) {
 func (e *Emulator) Close() error {
 	return nil
 }
+
+func (e *Emulator) SetBrightness(brightness int) {}

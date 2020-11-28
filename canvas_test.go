@@ -137,3 +137,7 @@ func (m *MatrixMock) Close() error {
 	m.called["Close"] = true
 	return nil
 }
+
+func (m *MatrixMock) SetBrightness(brightness int) {
+	m.called["MatrixMock"] = true
+}

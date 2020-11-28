@@ -35,6 +35,7 @@ void set_disable_hardware_pulsing(struct RGBLedMatrixOptions *o, int disable_har
 void set_inverse_colors(struct RGBLedMatrixOptions *o, int inverse_colors) {
   o->inverse_colors = inverse_colors != 0 ? 1 : 0;
 }
+
 */
 import "C"
 import (
@@ -306,6 +307,10 @@ func (c *RGBLedMatrix) Set(position int, color color.Color) {
 func (c *RGBLedMatrix) Close() error {
 	C.led_matrix_delete(c.matrix)
 	return nil
+}
+
+func (c *RGBLedMatrix) SetBrightness(brightness int) {
+	C.led_matrix_set_brightness(c.matrix, C.uint8_t(brightness))
 }
 
 func colorToUint32(c color.Color) uint32 {
