@@ -109,7 +109,7 @@ type HardwareConfig struct {
 
 	// Limit refresh rate of LED panel. This will help on a loaded system
 	// to keep a constant refresh rate. <= 0 for no limit.
-	LimitRefreshRateHz string
+	LimitRefreshRateHz int
 }
 
 func (c *HardwareConfig) geometry() (width, height int) {
