@@ -106,6 +106,10 @@ type HardwareConfig struct {
 
 	// Name of GPIO mapping used
 	HardwareMapping string
+
+	// Limit refresh rate of LED panel. This will help on a loaded system
+	// to keep a constant refresh rate. <= 0 for no limit.
+	LimitRefreshRateHz string
 }
 
 func (c *HardwareConfig) geometry() (width, height int) {
@@ -123,6 +127,7 @@ func (c *HardwareConfig) toC() *C.struct_RGBLedMatrixOptions {
 	o.brightness = C.int(c.Brightness)
 	o.scan_mode = C.int(c.ScanMode)
 	o.hardware_mapping = C.CString(c.HardwareMapping)
+	o.limit_refresh_rate_hz = C.int(c.LimitRefreshRateHz)
 
 	if c.ShowRefreshRate == true {
 		C.set_show_refresh_rate(o, C.int(1))
