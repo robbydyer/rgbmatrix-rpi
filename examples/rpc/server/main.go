@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
 
-	"github.com/fcjr/rgbmatrix-rpi/rpc"
+	"github.com/robbydyer/rgbmatrix-rpi/rpc"
 )
 
 var (

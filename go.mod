@@ -1,4 +1,4 @@
-module github.com/fcjr/rgbmatrix-rpi
+module github.com/robbydyer/rgbmatrix-rpi
 
 go 1.11
 

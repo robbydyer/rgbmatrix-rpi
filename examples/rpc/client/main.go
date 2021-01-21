@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
-	"github.com/fcjr/rgbmatrix-rpi/rpc"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
+	"github.com/robbydyer/rgbmatrix-rpi/rpc"
 )
 
 var (

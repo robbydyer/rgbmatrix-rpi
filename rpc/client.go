@@ -5,7 +5,7 @@ import (
 	"image/color"
 	"net/rpc"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
 )
 
 func init() {

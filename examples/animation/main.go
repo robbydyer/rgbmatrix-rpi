@@ -6,8 +6,8 @@ import (
 	"image/color"
 	"time"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
 	"github.com/fogleman/gg"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
 )
 
 var (

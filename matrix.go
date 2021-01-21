@@ -44,7 +44,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/fcjr/rgbmatrix-rpi/emulator"
+	"github.com/robbydyer/rgbmatrix-rpi/emulator"
 )
 
 // DefaultConfig default WS281x configuration

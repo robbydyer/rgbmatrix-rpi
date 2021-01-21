@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"image/color"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
 )
 
 var (

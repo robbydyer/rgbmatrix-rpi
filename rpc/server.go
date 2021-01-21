@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"net/rpc"
 
-	rgbmatrix "github.com/fcjr/rgbmatrix-rpi"
+	rgbmatrix "github.com/robbydyer/rgbmatrix-rpi"
 )
 
 type RPCMatrix struct {
