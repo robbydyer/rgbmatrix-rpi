@@ -35,6 +35,10 @@ func NewClient(network, addr string) (rgbmatrix.Matrix, error) {
 	}, nil
 }
 
+func (c *Client) SetBrightness(b int) {
+
+}
+
 // Geometry returns the width and the height of the matrix
 func (c *Client) Geometry() (width, height int) {
 	var reply *GeometryReply
